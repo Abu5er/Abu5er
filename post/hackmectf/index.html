@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+<head><script src="/Abu5er/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=Abu5er/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>HackmeCTF | Abu5er</title>
+
+    <link rel="stylesheet" href="/Abu5er/css/main.css">
+
+
+      <script src="/Abu5er/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center; gap: 20px;">
+  <div style="
+    width: 80px; /* 外框尺寸，比圖片稍大 */
+    height: 80px;
+    border: 4px solid white; /* 白色粗框，4px寬 */
+    border-radius: 50%; /* 圓形框 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  ">
+    <img 
+      src="http://localhost:1313/Abu5er/images/Abuser1.png"
+      style="
+        width: 70px; 
+        height: 70px; 
+        border-radius: 50%; 
+        object-fit: cover;
+        border: 4px solid black; /* 黑色粗框 */
+      "
+      alt="User Avatar"
+    >
+  </div>
+  <h1 style="margin: 0;">
+    Abu5er
+  </h1>
+</div>
+
+
+
+  </header>
+  <main>
+    
+<article class="page">
+  <header>
+  <h1>HackmeCTF</h1>
+  
+  
+  <time datetime="2025-09-03T14:41:44&#43;08:00">September 3, 2025</time>
+  </header>
+  <div class="page-content">
+  <ul>
+<li><a href="https://ctf.hackme.quest/">Hackme CTF</a></li>
+<li><a href="https://georgeom.net/StegOnline/checklist">Steganography Checklist</a></li>
+</ul>
+<hr>
+<h1 id="misc">Misc</h1>
+<h2 id="flag">flag</h2>
+<p>FLAG{This is flag&rsquo;s format}</p>
+<h2 id="corgi-can-fly">corgi can fly</h2>
+<p>Stegsolve is a Java-based tool used to analyze images for steganography by allowing users to view and manipulate different color channels, bit planes, and image layers. The core principle behind Stegsolve is to help reveal hidden information embedded in images by applying various visual transformations, such as viewing individual RGB channels or bit planes, and performing operations like color inversion or rotation.<br>
+Download: <a href="http://www.caesum.com/handbook/Stegsolve.jar">http://www.caesum.com/handbook/Stegsolve.jar</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>java -jar Stegsolve.jar
+</span></span></code></pre></div><p><del>Online: <a href="https://georgeom.net/StegOnline/upload">https://georgeom.net/StegOnline/upload</a></del><br>
+FLAG{Corgi is cutest aniaml on the earth &gt;////////&lt;}</p>
+<h2 id="television">television</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>strings television.bmp
+</span></span></code></pre></div><p>FLAG{PuRe_R@ND0M_DaTa_Fr0M/D3V/UR@ND0M}</p>
+<h2 id="meow">meow</h2>
+<p>Use binwalk can see the zip file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>binwalk -e meow.png
+</span></span></code></pre></div><p>Use foremost extract the file <code>00000000.png</code> and <code>00000094.zip</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>foremost -i meow.png -o a
+</span></span></code></pre></div><p>Use unzip to check the CRC.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>unzip -v 00000094.zip 
+</span></span></code></pre></div><p><img src="/Abu5er/images/hackmectf/meow0.png" alt="Error"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>zip plain.zip 00000000.png
+</span></span><span style="display:flex;"><span>unzip -v plain.zip
+</span></span></code></pre></div><p><img src="/Abu5er/images/hackmectf/meow1.png" alt="Error"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>//Install bkcrack
+</span></span><span style="display:flex;"><span>git clone https://github.com/kimci86/bkcrack.git
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">cd</span> bkcrack
+</span></span><span style="display:flex;"><span>cmake -S . -B build -DCMAKE_INSTALL_PREFIX=install
+</span></span><span style="display:flex;"><span>cmake --build build --config Release
+</span></span><span style="display:flex;"><span>cmake --build build --config Release --target install
+</span></span><span style="display:flex;"><span>sudo cp install/bkcrack /usr/sbin/bkcrack
+</span></span><span style="display:flex;"><span>bkcrack --help
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>bkcrack -C 00000094.zip \
+</span></span><span style="display:flex;"><span>        -c meow/t39.1997-6/p296x100/10173502_279586372215628_1950740854_n.png \
+</span></span><span style="display:flex;"><span>        -P plain.zip \
+</span></span><span style="display:flex;"><span>        -p 00000000.png \
+</span></span><span style="display:flex;"><span>        -d result.zip
+</span></span></code></pre></div>
+  </div>
+  
+
+  <style>
+ 
+.toc-container {
+  position: fixed;
+  right: 20px;
+  top: 20%;
+  width: 280px;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  font-size: 14px;
+}
+
+.toc h3 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #007acc;
+  padding-bottom: 8px;
+}
+
+.toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc li {
+  margin: 6px 0;
+  padding-left: 12px;
+}
+
+.toc a {
+  display: block;
+  padding: 6px 12px;
+  color: #666;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+}
+
+.toc a:hover {
+  background-color: #f8f9fa;
+  color: #007acc;
+  transform: translateX(4px);
+}
+
+@media (max-width: 1200px) {
+  .toc-container {
+    display: none;
+  }
+}
+</style><aside id="toc-container" class="toc-container">
+  <div class="toc">
+    <h3>Context</h3>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#flag">flag</a></li>
+    <li><a href="#corgi-can-fly">corgi can fly</a></li>
+    <li><a href="#television">television</a></li>
+    <li><a href="#meow">meow</a></li>
+  </ul>
+</nav>
+  </div>
+</aside>
+</article>
+
+  </main>
+  <footer>
+    <div style="margin-left: 80px;">
+<p>Copyright © 2025 Abu5er</p>
+</div>
+
+  </footer>
+</body>
+</html>
